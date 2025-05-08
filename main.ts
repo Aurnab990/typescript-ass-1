@@ -12,6 +12,11 @@ function filterByRating(items: { title: string; rating: number }[]): { title: st
     return higherRating;
 } 
 
+function concatenateArrays<T>(...arrays: T[][]): T[]{
+    const newArray = arrays.reduce((acc,curr)=>acc.concat(curr),[]);
+    return newArray;
+}
+
 class Vehicle{
    private make: string;
    private year: number;
@@ -42,4 +47,51 @@ function processValue(value: string | number): number{
     else{
         return value.length;
     }
+}
+
+interface Product {
+  name: string;
+  price: number;
+}
+function getMostExpensiveProduct(products: Product[]): Product | null{
+    if(products.length === 0){
+        return null;
+    }
+        let maxPriceProduct = products[0];
+        for(const product of products){
+            if(product.price > maxPriceProduct.price){
+                maxPriceProduct=product;
+            }
+        }
+        return maxPriceProduct;   
+}
+
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday
+}
+
+function getDayType(day: Day): string{
+    if(day === Day.Saturday || day === Day.Sunday){
+        return "Weekend";
+    }else{
+        return "Weekday";
+    }
+}
+
+async function squareAsync(n: number): Promise<number> {
+  return new Promise<number>((resolve, reject) => {
+    setTimeout(() => {
+      if (n < 0) {
+        reject(new Error("Error: Negative numbers are not allowed"));
+      } else {
+        resolve(n * n);
+      }
+    }, 1000);
+  });
 }
