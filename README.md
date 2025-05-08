@@ -83,9 +83,11 @@ Type Alias:
       let value: any = 42;
       value = "hello"; //It don't give any error.
 
-      ```      
+      ```  
+      
 
   Unknown:
+  
   *In a single word: We don't know the type, we can know in the future. That means we don't know the types, but we will know the types when the function will 
    execute, we see in the ```runtime```. And Its a safe version of ```Any```.
   * In Javascript we use typeOf to checking type. Here also use typeOf.
